@@ -94,11 +94,13 @@ combinedDF['Sex'] = combinedDF['Sex'].map({'female': 1, 'male': 0}).astype(int)
 print(combinedDF.head())
 
 print('\n------------Question 17----------------\n')
-# combinedDF['Age'] = KNN(k=3).fit_transform(combinedDF['Age'].values())
 imputer = KNNImputer(n_neighbors=3)
-combinedDF['Age'] = imputer.fit_transform(combinedDF['Age'].values.reshape(-1, 1))
+tempNum = combinedDF[['Age', 'Fare', 'Sex']].copy()
+tempNum = pd.DataFrame(data = imputer.fit_transform(tempNum), columns=tempNum.columns, index=tempNum.index)
+combinedDF['Age'] = tempNum['Age']
 print(combinedDF.isnull().sum())
 print(combinedDF.head())
+
 print("Notice how age now has 0 null values :)")
 
 print('\n------------Question 18----------------\n')
