@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from sklearn.impute import KNNImputer
-from fancyimpute import KNN
 
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
